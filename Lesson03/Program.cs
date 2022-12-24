@@ -31,22 +31,25 @@ namespace Lesson03
             }
         }
 
-        static private bool checkFiveDigit(int _number)
+        static private int findDigitNumber(int _number)
         {
-            bool check = false;
-            if (_number > 9999 || _number < 100000)
+            int count = 0;
+            int localNumber = _number;
+            do
             {
-                check = true;
-            }
-            return check;
+                localNumber /= 10;
+                count++;
+            } while (localNumber > 0);
+            return count;
         }
 
         static private bool checkPalindrom(int _number)
         {
             bool isPalindrom = false;
+            int equalsCount = 0;
             int localNumber = _number;
             int rightNumber, leftNumber;
-            int count = 5; // TODO: надо определить разрядность числа
+            int count = findDigitNumber(_number); // TODO: надо определить разрядность числа
             int digit = 10;
             while (count > 1)
             {
@@ -54,18 +57,19 @@ namespace Lesson03
                 rightNumber = (int)(localNumber % Math.Pow(digit, 1));
                 if (leftNumber == rightNumber)
                 {
-                    isPalindrom = true;
+                    equalsCount++;
                 }
-                else
-                {
-                    isPalindrom = false;
-                }
-                int number1 = (int)(leftNumber * Math.Pow(digit, count - 1));
-                int number2 = (int)(rightNumber * Math.Pow(digit, 1 - 1));
                 localNumber = (int)((int)(localNumber / Math.Pow(digit, 1)) % Math.Pow(digit, count - 1 - 1));
                 count -= 2;
             }
-
+            if (equalsCount == (int)(findDigitNumber(_number) / 2))
+            {
+                isPalindrom = true;
+            }
+            else
+            {
+                isPalindrom = false;
+            }
             return isPalindrom;
         }
 
@@ -96,7 +100,7 @@ namespace Lesson03
              */
             Console.WriteLine("\nЗадача 19");
             Console.WriteLine("---------");
-            int[] array = { 14212, 12821, 23432 };
+            int[] array = { 14212, 12821, 23432, 24641, 456654, 1345423 };
             foreach (int item in array)
             {
                 if (checkPalindrom(item))
