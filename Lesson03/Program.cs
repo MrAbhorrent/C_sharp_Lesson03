@@ -5,7 +5,7 @@ namespace Lesson03
 {
     class Program
     {
-        private class myPoint 
+        private class myPoint
         {
             private int x;
             private int y;
@@ -83,7 +83,7 @@ namespace Lesson03
                 if (i != N)
                 {
                     strBuild.Append(", ");
-                }                
+                }
             }
             Console.WriteLine(strBuild.ToString());
             strBuild.Clear();
@@ -112,7 +112,6 @@ namespace Lesson03
                     Console.WriteLine("{0} - нет", item);
                 }
             }
-
             Console.WriteLine("=======================================================================");
             /* Задача 21
             * Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
@@ -121,7 +120,7 @@ namespace Lesson03
             */
             Console.WriteLine("\nЗадача 21");
             Console.WriteLine("---------");
-            myPoint pointA = new myPoint(3, 6,  8);
+            myPoint pointA = new myPoint(3, 6, 8);
             myPoint pointB = new myPoint(2, 1, -7);
             Console.WriteLine("A {0} B {1} -> {2:f2}", pointA.ToString(), pointB.ToString(), pointA.distance(pointB));
             pointA = new myPoint(7, -5, 0);
@@ -137,7 +136,6 @@ namespace Lesson03
             Console.WriteLine("---------");
             printQubeTable(3);
             printQubeTable(5);
-
 
             Console.ReadKey();
         }
